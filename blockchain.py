@@ -19,13 +19,13 @@ class Blockchain(object):
             'timestamp' : time(), # timestamp from 1970
             'transactions' : self.current_transaction,
             'proof' : proof,
-            'previous_hash' : previous_hash or self.hash(self.chain[-1]);
+            'previous_hash' : previous_hash or self.hash(self.chain[-1]),
         }
         self.current_transaction = []
         self.chain.append(block)
         return block
 
-    def new_transaction(self):
+    def new_transaction(self, sender, recipient, amount):
         # Adds a new transaction to the list of transaction
         self.current_transaction.append(
             {

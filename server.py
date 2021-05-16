@@ -45,7 +45,7 @@ def new_transaction():
 @app.route('/mine', methods=['GET'])
 def mine():
     last_block = blockchain.last_block
-    last_proof = lastblock['proof']
+    last_proof = last_block['proof']
 
     proof = blockchain.pow(last_proof)
 
@@ -69,7 +69,7 @@ def mine():
         'previous_hash' : block['previous_hash']
     }
 
-    return jsonify(repsonse), 200
+    return jsonify(response), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
