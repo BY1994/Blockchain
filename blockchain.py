@@ -3,7 +3,6 @@ import json
 from time import time
 # from urlparse import urlparse
 from urllib.parse import urlparse
-import requests
 
 class Blockchain(object):
     def __init__(self):
@@ -13,7 +12,7 @@ class Blockchain(object):
         # genesis block 생성
         self.new_block(previous_hash=1, proof=100)
     
-    def new_block(self):
+    def new_block(self, proof, previous_hash=None):
         # Creates a new Block and adds it to the chain
         block = {
             'index' : len(self.chain)+1,
