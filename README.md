@@ -3,7 +3,7 @@
 본 repository는 다음의 강의를 토대로 작성한 코드입니다.
 
 - 유튜브 강의: https://www.youtube.com/watch?v=Gno15LgVbcc
-- 소스 코드: https://github.com/tr0y-kim/ez_blockchain/blob/master/blockchain.py
+- 소스 코드: https://github.com/tr0y-kim/ez_blockchain
 
 위의 코드는 다음과 같이 이루어져있습니다.
 
