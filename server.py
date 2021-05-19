@@ -71,5 +71,39 @@ def mine():
 
     return jsonify(response), 200
 
+@app.route('nodes/register', methods=['POST'])
+def register_nodes():
+    values = request.get_json() # json 형태로 보내면 노드가 저장이 됨
+
+    nodes = values.get('nodes')
+    if nodes is None: # Bad Request 400
+        return "Error: Please supply a valid list of nodes", 400
+
+    for node in nodes:
+        blockchain.register_node(node) # 아까 작성한 register node 함수를 사용할 것. 노드 등록
+    
+    response = {
+        'message' : 'New nodes have been added',
+        'total_nodes' : list(blockchain.nodes),
+    }
+    return jsonify(response), 201
+
+@app.route('/nodes/resolve', methods='GET')
+def consensus():
+    replaced = blockchain.resolve_conflicts() # True Flase return
+
+    # 체인 변경 알림 메시지
+    if replaced:
+        response = {
+            'message' : 'Our chain was replaced',
+            'new_chain' : blockchain.chain
+        }
+    else:
+        response = {
+            'message' : 'Our chain is authoritative',
+            'chain' : blockchain.chain
+        }
+    return jsonify(response), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
