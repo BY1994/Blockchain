@@ -77,8 +77,8 @@ class Blockchain(object):
 
         while current_index < len(chain): # 전체 체인 길이만큼 반복해 비교
             block = chain[current_index]
-            print('%s', % last_block)
-            print('%s', % block)
+            print('%s' % last_block)
+            print('%s' % block)
             print("\n--------\n")
             # check that the hash of the block is correct
             # hash 값을 비교해서 같지 않으면 거짓을 반환
